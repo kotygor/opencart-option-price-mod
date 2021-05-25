@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Opencart option price mod</name>
+	<code>default</code>
+	<version>3.0</version>
+	<author>JD</author>
+	<link>zelenuj@gmail.com</link>
+	<file path="admin/view/template/catalog/product_form.twig">
+		<!-- price_prefix -->
+		<operation>
+			<search>
+				<![CDATA[{% if product_option_value.price_prefix == '+' %}]]>
+			</search>
+			<add position="before">
+				<![CDATA[
+					{# system/kotygor_opencart_option_price_mod.ocmod.xml #}
+					{% if product_option_value.price_prefix == '=' %}
+						<option value="=" selected="selected">=</option>
+					{% else %}
+						<option value="=">=</option>
+					{% endif %}
+
+{# для цього коду потрібно доробляти виведення опцій у фронтенді
+					{% if product_option_value.price_prefix == '*' %}
+						<option value="*" selected="selected">*</option>
+					{% else %}
+						<option value="*">*</option>
+					{% endif %}
+
+					{% if product_option_value.price_prefix == '/' %}
+						<option value="/" selected="selected">/</option>
+					{% else %}
+						<option value="/">/</option>
+					{% endif %}
+
+					{% if product_option_value.price_prefix == 'u' %}
+						<option value="u" selected="selected">+%</option>
+					{% else %}
+						<option value="u">+%</option>
+					{% endif %}
+
+					{% if product_option_value.price_prefix == 'd' %}
+						<option value="d" selected="selected">-%</option>
+					{% else %}
+						<option value="d">-%</option>
+					{% endif %}
+#}
+					{# END system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+			</add>
+		</operation>
+		<operation>
+			<search index="2">
+				<![CDATA[<select name="product_option[' + option_row + '][product_option_value][' + option_value_row + ']]]>
+			</search>
+			<add position="after" offset="2">
+				<![CDATA[
+	{# system/kotygor_opencart_option_price_mod.ocmod.xml #}
+	html += '      <option value="=">=</option>';
+{# для цього коду потрібно доробляти виведення опцій у фронтенді
+    html += '      <option value="*">*</option>';
+    html += '      <option value="/">/</option>';
+    html += '      <option value="u">+%</option>';
+    html += '      <option value="d">-%</option>';
+#}
+	{# END system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+			</add>
+		</operation>
+		<!-- points_prefix -->
+		<!--
+	    <operation>
+	        <search>
+	            <![CDATA[{% if product_option_value.points_prefix == '+' %}]]>
+	        </search>
+	        <add position="before">
+	            <![CDATA[
+					{# Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+					{% if product_option_value.points_prefix == '=' %}
+						<option value="=" selected="selected">=</option>
+					{% else %}
+						<option value="=">=</option>
+					{% endif %}
+
+					{% if product_option_value.points_prefix == '*' %}
+						<option value="*" selected="selected">*</option>
+					{% else %}
+						<option value="*">*</option>
+					{% endif %}
+
+					{% if product_option_value.points_prefix == '/' %}
+						<option value="/" selected="selected">/</option>
+					{% else %}
+						<option value="/">/</option>
+					{% endif %}
+
+					{% if product_option_value.points_prefix == 'u' %}
+						<option value="u" selected="selected">+%</option>
+					{% else %}
+						<option value="u">+%</option>
+					{% endif %}
+
+					{% if product_option_value.points_prefix == 'd' %}
+						<option value="d" selected="selected">-%</option>
+					{% else %}
+						<option value="d">-%</option>
+					{% endif %}
+					{# END Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+	        </add>
+	    </operation>
+		<operation>
+			<search index="3">
+				<![CDATA[<select name="product_option[' + option_row + '][product_option_value][' + option_value_row + ']]]>
+			</search>
+			<add position="after" offset="2">
+				<![CDATA[
+	{# Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+	html += '      <option value="=">=</option>';
+    html += '      <option value="*">*</option>';
+    html += '      <option value="/">/</option>';
+    html += '      <option value="u">+%</option>';
+    html += '      <option value="d">-%</option>';
+	{# END Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+			</add>
+		</operation>
+		-->
+		<!-- weight_prefix -->
+		<!--
+		<operation>
+		    <search>
+		        <![CDATA[{% if product_option_value.weight_prefix == '+' %}]]>
+		    </search>
+		    <add position="before">
+		        <![CDATA[
+					{# Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+					{% if product_option_value.weight_prefix == '=' %}
+						<option value="=" selected="selected">=</option>
+					{% else %}
+						<option value="=">=</option>
+					{% endif %}
+
+					{% if product_option_value.weight_prefix == '*' %}
+						<option value="*" selected="selected">*</option>
+					{% else %}
+						<option value="*">*</option>
+					{% endif %}
+
+					{% if product_option_value.weight_prefix == '/' %}
+						<option value="/" selected="selected">/</option>
+					{% else %}
+						<option value="/">/</option>
+					{% endif %}
+
+					{% if product_option_value.weight_prefix == 'u' %}
+						<option value="u" selected="selected">+%</option>
+					{% else %}
+						<option value="u">+%</option>
+					{% endif %}
+
+					{% if product_option_value.weight_prefix == 'd' %}
+						<option value="d" selected="selected">-%</option>
+					{% else %}
+						<option value="d">-%</option>
+					{% endif %}
+					{# END Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+		    </add>
+		</operation>
+		<operation>
+			<search index="4">
+				<![CDATA[<select name="product_option[' + option_row + '][product_option_value][' + option_value_row + ']]]>
+			</search>
+			<add position="after" offset="2">
+				<![CDATA[
+	{# Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+	html += '      <option value="=">=</option>';
+    html += '      <option value="*">*</option>';
+    html += '      <option value="/">/</option>';
+    html += '      <option value="u">+%</option>';
+    html += '      <option value="d">-%</option>';
+	{# END Options price mod system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+			</add>
+		</operation>
+		-->
+	</file>
+	<file path="system/library/cart/cart.php">
+		<operation>
+			<search index="1">
+				<![CDATA[foreach ($cart_query->rows as $cart) {]]>
+			</search>
+			<add position="after">
+				<![CDATA[
+			// system/kotygor_opencart_option_price_mod.ocmod.xml
+			// hardfix price
+			if (isset($price)) unset($price);
+			$option_price_1 = array();
+			// system/kotygor_opencart_option_price_mod.ocmod.xml
+]]>
+			</add>
+		</operation>
+		<operation>
+			<search>
+				<![CDATA[if ($option_value_query->row['price_prefix'] == '+') {]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+								// system/kotygor_opencart_option_price_mod.ocmod.xml
+								if ($option_value_query->row['price_prefix'] == '=') {
+									$option_price = $option_value_query->row['price'];
+									$price = 0;
+								}
+								/*  для цього коду потрібно доробляти виведення опцій у фронтенді
+								elseif ($option_value_query->row['price_prefix'] == '*') {
+									$option_price = $product_query->row['price'] * $option_value_query->row['price'];
+									$price = 0;
+								} elseif ($option_value_query->row['price_prefix'] == '/') {
+									$option_price = $product_query->row['price'] / $option_value_query->row['price'];
+									$price = 0;
+								} elseif ($option_value_query->row['price_prefix'] == 'u') {
+									$option_price = $product_query->row['price'] * ( 1 + $option_value_query->row['price']/100 );
+									$price = 0;
+								} elseif ($option_value_query->row['price_prefix'] == 'd') {
+									$option_price = $product_query->row['price'] * ( 1 - $option_value_query->row['price']/100 );
+									$price = 0;
+								} */
+								elseif ($option_value_query->row['price_prefix'] == '+') {
+								// END system/kotygor_opencart_option_price_mod.ocmod.xml]]>
+			</add>
+		</operation>
+		<operation>
+			<search>
+				<![CDATA[if ($option_value_query->row['points_prefix'] == '+') {]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+								// system/kotygor_opencart_option_price_mod.ocmod.xml
+								$option_price_1[] = [
+									$option_value_query->row['price_prefix'] => $option_value_query->row['price']
+								];
+
+								if ($option_value_query->row['points_prefix'] == '=') {
+									$option_points = $option_value_query->row['points'];
+								} elseif ($option_value_query->row['points_prefix'] == '*') {
+									$option_points *= $option_value_query->row['points'];
+								} elseif ($option_value_query->row['points_prefix'] == '/') {
+									$option_points /= $option_value_query->row['points'];
+								} elseif ($option_value_query->row['points_prefix'] == 'u') {
+									$option_points *= 1 + $option_value_query->row['points']/100;
+								} elseif ($option_value_query->row['points_prefix'] == 'd') {
+									$option_points *= 1 - $option_value_query->row['points']/100;
+								} elseif ($option_value_query->row['points_prefix'] == '+') {
+								// END system/kotygor_opencart_option_price_mod.ocmod.xml]]>
+			</add>
+		</operation>
+		<operation>
+			<search>
+				<![CDATA[$price = $product_query->row['price'];]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+		        // system/kotygor_opencart_option_price_mod.ocmod.xml
+		        // $price = $product_query -> row[ ' price ' ]; ===> replaced
+		        if (!isset($price)) $price = $product_query->row['price'];
+			    // END system/kotygor_opencart_option_price_mod.ocmod.xml
+			    ]]>
+			</add>
+		</operation>
+	</file>
+	<file path="catalog/view/theme/fractal/template/product/product.twig">
+		<operation>
+			<search index="0">
+				<![CDATA[<span class="im_option">{{ option_value['name'] }}</span>]]>
+			</search>
+			<add position="replace" offset="3">
+				<![CDATA[
+        {# system/kotygor_opencart_option_price_mod.ocmod.xml #}
+		<span class="im_option{% if option_value.not_available %} not_in_stock{% endif %}">{{- option_value['name'] -}}
+			{#
+			{% if (option_value['price']) %}
+				<b>{% if option_value['price_prefix'] != '='%}{{ option_value['price_prefix'] }}{% endif %}<br>{{- option_value['price'] -}}</b>
+			{% endif %} #}</span>
+		<span class = "options-prheight"></span>
+		{# END system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+			</add>
+		</operation>
+		<operation>
+			<search>
+				<![CDATA[<img src="{{ option_value['image'] }}" data-toggle="tooltip" data-placement="top" title="{{ option_value['name'] }}" class="img-thumbnail imgpopcat" {% if (option_value['image_opt']) %} data-image="{{ option_value['image_optthumb'] }}" data-zoom-image="{{ option_value['image_opt'] }}" {% else %} data-image="{{ option_value['optthumb'] }}" data-zoom-image="{{ option_value['popup'] }}" {% endif %} alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" />]]>
+			</search>
+			<add position="replace">
+				<![CDATA[
+{# system/kotygor_opencart_option_price_mod.ocmod.xml #}
+<img src="{{ option_value['image'] }}" data-toggle="tooltip" data-placement="top" title="{{ option_value['name'] }}{% if option_value.not_available %} Нет в наличии.{% endif %}" class="img-thumbnail imgpopcat{% if option_value.not_available %} not_in_stock{% endif %}" {% if (option_value['image_opt']) %} data-image="{{ option_value['image_optthumb'] }}" data-zoom-image="{{ option_value['image_opt'] }}" {% else %} data-image="{{ option_value['optthumb'] }}" data-zoom-image="{{ option_value['popup'] }}" {% endif %} alt="{{ option_value.name }} {# {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %} #}" />
+{# END system/kotygor_opencart_option_price_mod.ocmod.xml #}
+]]>
+			</add>
+		</operation>
+	</file>
+</modification>

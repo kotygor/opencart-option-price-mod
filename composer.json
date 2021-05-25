@@ -1,0 +1,13 @@
+{
+	"name": "kotygor/opencart-option-price-mod",
+	"description": "Extends price modificator",
+	"type": "opencart-extension",
+	"extra": {
+		"src-dir": "upload",
+		"mappings": [
+		],
+		"installers": {
+			"xml": "install.xml"
+		}
+	}
+}
