@@ -2,7 +2,7 @@
 <modification>
 	<name>Opencart option price mod</name>
 	<code>default</code>
-	<version>3.0</version>
+	<version>v3.0.1</version>
 	<author>JD</author>
 	<link>zelenuj@gmail.com</link>
 	<file path="admin/view/template/catalog/product_form.twig">

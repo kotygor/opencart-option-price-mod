@@ -1,5 +1,6 @@
 {
 	"name": "kotygor/opencart-option-price-mod",
+	"version": "v3.0.1",
 	"description": "Extends price modificator",
 	"type": "opencart-extension",
 	"extra": {
